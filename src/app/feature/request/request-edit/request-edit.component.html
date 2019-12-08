@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <div class="component">
     <section class="heading">
         <span class='component-title'>{{title}}</span>
@@ -9,12 +10,11 @@
             <tr>
                 <td>UserID:</td>
                 <td>
-                    <select [(ngModel)]="request.user.userName" class="rounded" [compareWith]="compUser">
-                        <option *ngFor="let u of user" [ngValue]="u">{{u.user}}</option>
+                    <select [(ngModel)]="request.user" class="rounded" [compareWith]="compUser">
+                        <option *ngFor="let u of users" [ngValue]="u">{{u.lastName}},{{u.firstName}}</option>
                     </select>
 
-    
-                        </td>
+                </td>
             </tr>
             <tr>
                 <td>Description:</td>

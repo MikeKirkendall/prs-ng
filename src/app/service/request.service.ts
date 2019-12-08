@@ -34,6 +34,7 @@ export class RequestService {
 
   delete(id: number): Observable<JsonResponse> {
     return this.http.delete(this.url + id) as Observable<JsonResponse>;
+  
   }
 
 }

@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./user-detail.component.css']
 })
 export class UserDetailComponent implements OnInit {
-  title: string = 'User Detail';
+ title: string = 'User Detail';
   user: User = new User();
   id: number = 0;
 
@@ -36,5 +36,5 @@ export class UserDetailComponent implements OnInit {
       })
     }
   } 
-
+ 
 

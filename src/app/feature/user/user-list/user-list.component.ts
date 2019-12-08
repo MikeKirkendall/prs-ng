@@ -17,9 +17,9 @@ export class UserListComponent extends BaseComponent implements OnInit {
 
 
   constructor(private userSvc: UserService,
-              protected sysSvc: SystemService) { 
-      super(sysSvc);
-              }
+    protected sysSvc: SystemService) {
+    super(sysSvc);
+  }
 
   ngOnInit() {
     super.ngOnInit();
@@ -27,7 +27,7 @@ export class UserListComponent extends BaseComponent implements OnInit {
       this.jr = jresp;
       this.users = this.jr.data as User[];
       console.log(this.users)
-      
+
 
     });
   }
@@ -35,7 +35,7 @@ export class UserListComponent extends BaseComponent implements OnInit {
   sortCriteria: string = "id";
   sortOrder: string = "asc";
   sortBy(column: string): void {
-    if(column == this.sortCriteria) { 
+    if (column == this.sortCriteria) {
       this.sortOrder = (this.sortOrder == "desc") ? "asc" : "desc";
     }
     this.sortCriteria = column;

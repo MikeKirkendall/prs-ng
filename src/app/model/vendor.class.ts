@@ -13,6 +13,7 @@ export class Vendor {
 
     constructor(id: number =0, code: string="", name: string="", address: string="", city: string="", state: string="", zip: string="",
         phoneNumber: string="", email: string="") {
+
     this.id = id;
     this.code = code;
     this.name = name;
