@@ -35,16 +35,36 @@ export class RequestLinesComponent extends BaseComponent implements OnInit {
     // get id from url
     this.route.params.subscribe(parms => this.id = parms['id']);
     console.log('request lines component...  request id = ' + this.id);
-    this.requestSvc.get(this.id).subscribe(jr => {
-      this.request = jr.data as Request;
+
+    this.reloadData();
+
+  }
+
+  reloadData():void {this.requestSvc.get(this.id).subscribe(jr => {
+    this.request = jr.data as Request;
+  });
+
+  this.lineitemSvc.linesForRequest(this.id).subscribe(jresp => {
+    console.log(jresp);
+    this.jr = jresp;
+    this.lines = this.jr.data as LineItem[];
+  });
+
+  }
+
+  delete(id: number): void{
+    this.lineitemSvc.delete(id).subscribe(jresp => {
+      console.log("deleted line successfully");
+      this.reloadData();
     });
 
-    this.lineitemSvc.linesForRequest(this.id).subscribe(jresp => {
-      console.log(jresp);
-      this.jr = jresp;
-      this.lines = this.jr.data as LineItem[];
-    });
+  }
 
+  submitForReview(): void {
+    this.requestSvc.submitReview(this.request).subscribe(jr => {
+      this.router.navigateByUrl("requests/list");
+
+    });  
   }
 
   searchCriteria: string = '';

@@ -12,9 +12,6 @@ export class RequestService {
 
   constructor(private http: HttpClient) { }
 
-  login(r: Request): Observable<JsonResponse> {
-    return this.http.post(this.url +"login", r) as Observable<JsonResponse>;
-  }
 
   list(): Observable<JsonResponse> {
     return this.http.get(this.url) as Observable<JsonResponse>;
@@ -27,14 +24,29 @@ export class RequestService {
   save(request: Request): Observable<JsonResponse> {
     return this.http.post(this.url, request) as Observable<JsonResponse>;
   }
-  
+
   update(request: Request): Observable<JsonResponse> {
     return this.http.put(this.url, request) as Observable<JsonResponse>;
   }
 
   delete(id: number): Observable<JsonResponse> {
     return this.http.delete(this.url + id) as Observable<JsonResponse>;
-  
   }
 
+  reviewList(id: number): Observable<JsonResponse> {
+    return this.http.get(this.url + "list-review/" + id) as Observable<JsonResponse>;
+  }
+
+  submitReview(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + "submit-review", request) as Observable<JsonResponse>;
+  }
+
+  approve(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + "approve", request) as Observable<JsonResponse>;
+
+  }
+  reject(request: Request): Observable<JsonResponse> {
+    return this.http.put(this.url + "reject", request) as Observable<JsonResponse>;
+
+  }
 }

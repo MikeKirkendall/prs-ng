@@ -1,1 +1,67 @@
-<p>request-approve works!</p>
+<app-menu></app-menu>
+<div class='component-content'>
+    <div class='lefthalf'>
+        <span class='component-title'>{{title}} </span>
+        <span><a routerLink='/requests/lines/'>
+            </a>
+        </span>
+    </div>
+</div>
+<p *ngIf='!request'>Loading...</p>
+<table *ngIf='request' class="table">
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Total</th>
+
+    </tr>
+    <tr>
+        <td>{{request.id}}</td>
+        <td>{{request.description}}</td>
+        <td>{{request.status}}</td>
+        <td>{{request.total}}</td>
+
+    </tr>
+</table>
+
+
+<div class='component-content'>
+    <div class='lefthalf'>
+        <span class='component-title'>Line Items</span>
+    </div>
+</div>
+
+<p *ngIf='!lines'>Loading....</p>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Line Total</th>
+
+    </tr>
+    <tr *ngFor="let l of lines">
+        <td>{{l.id}}</td>
+        <td>{{l.product.name}}</td>
+        <td>{{l.quantity}}</td>
+        <td>{{l.product.price | currency}}</td>
+        <td>{{l.product.price * l.quantity | currency}}</td>
+
+    </tr>
+    <tr *ngIf="request.status != 'Rejected'">
+        <td><button (click)="approve()" class="btn btn-sm btn-primary">Approve</button></td>
+        <td><button (click)="rejectReason()" class="btn btn-sm btn-primary">Reject</button></td>
+    </tr>
+
+    <tr *ngIf="request.status == 'Rejected'">
+        <td><input [(ngModel)]= "request.reasonForRejection" class="rounded" type="text" ></td>
+
+    </tr>
+    <tr *ngIf="request.status == 'Rejected'">
+        <td><button (click)="reject()" class="btn btn-sm btn-primary">Reject</button></td>
+
+    </tr>
+</table>

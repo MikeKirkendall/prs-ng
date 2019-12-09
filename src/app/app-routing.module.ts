@@ -47,8 +47,8 @@ const routes: Routes = [
   {path: 'requests/approve/:id', component: RequestApproveComponent},
   {path: 'requests/lines/:id', component: RequestLinesComponent},
   {path: 'requests/review/:id', component: RequestReviewComponent},
-  {path: 'lineitems/create/:id', component: LineItemCreateComponent},
-  {path: 'lineitems/edit/:id', component: LineItemEditComponent},
+  {path: 'line-items/create/:id', component: LineItemCreateComponent},
+  {path: 'line-items/edit/:id', component: LineItemEditComponent},
   {path: '**', component: UserListComponent},
 ];
 

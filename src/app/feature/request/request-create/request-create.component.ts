@@ -14,6 +14,7 @@ import { BaseComponent } from '../../base/base.component';
 export class RequestCreateComponent extends BaseComponent implements OnInit {
   title: string = 'Request Create';
   request: Request = new Request();
+ 
 
   constructor(private requestSvc: RequestService,
           private router: Router,
@@ -22,6 +23,7 @@ export class RequestCreateComponent extends BaseComponent implements OnInit {
           }
    
   ngOnInit() {
+    super.ngOnInit();
     this.request.user = this.sysSvc.loggedInUser
   }
 

@@ -26,7 +26,7 @@ export class UserDetailComponent implements OnInit {
     });
   }
 
-    delete()  { 
+    delete(){   
       this.userSvc.delete(this.id).subscribe(jr => {
         console.log("user delete jr:",jr);
         if (jr.errors != null) {

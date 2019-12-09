@@ -29,20 +29,30 @@ export class LineItemEditComponent implements OnInit {
   ngOnInit() {
     this.productSvc.list().subscribe(jr => {
       this.products = jr.data as Product[];
-    
     });
 
     // get the line item for the id passed in from the url
-    this.route.params.subscribe(parms => this.id = parms['id']);
+   this.route.params.subscribe(parms => this.id = parms['id']);
     this.lineitemSvc.get(this.id).subscribe(jr => {
-      this.lineitem = jr.data as LineItem;
-      
+      this.lineitem = jr.data as LineItem
     });
+
+
+  }
+
+  delete()  { 
+    this.lineitemSvc.delete(this.id).subscribe(jr => {
+      console.log("user delete jr:",jr);
+      if (jr.errors != null) {
+        console.log("Error deleting user: "+jr.errors);
+      }
+      this.router.navigateByUrl("requests/lineitems"+this.id);
+    })
   }
 
   save(): void {
     this.lineitemSvc.save(this.lineitem).subscribe(jr => {
-      this.router.navigateByUrl("/requests/lines/" + this.id);
+      this.router.navigateByUrl("/requests/lines/"+this.lineitem.request.id);
     });
   }
 }

@@ -31,13 +31,13 @@ export class LineItemService {
     return this.http.get(this.url + "/lines-for-pr/" + id) as Observable<JsonResponse>;
   }
 
-  // updateli(id: number): Observable<JsonResponse> {
-  //   return this.http.put(this.url + "/"+ this.updateli + id ) as Observable<JsonResponse>
-  // }
+  linesForUpdate(lineitem: LineItem): Observable<JsonResponse> {
+  return this.http.put(this.url, lineitem) as Observable<JsonResponse>
+  }
 
 
   delete(id: number): Observable<JsonResponse> {
-    return this.http.delete(this.url + id) as Observable<JsonResponse>;
+    return this.http.delete(this.url+id) as Observable<JsonResponse>;
   }
 
 }

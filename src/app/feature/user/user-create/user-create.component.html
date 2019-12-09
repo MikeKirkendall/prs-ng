@@ -34,6 +34,14 @@
                 <td>Email:</td>
                 <td><input [(ngModel)]="user.email" class="rounded" type="text" ></td>
             </tr>
+            <tr>
+                <td>reviewer: </td>
+                <input [(ngModel)]='user.reviewer' name='reviewer' type="checkbox" id="reviewer">
+            </tr>
+            <tr>
+                <td>admin: </td>
+                <input [(ngModel)]='user.admin' name='admin' type="checkbox" id="admin">
+            </tr>
             
         </table>
     </main>

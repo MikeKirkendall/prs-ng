@@ -1,12 +1,20 @@
 <app-menu></app-menu>
 <div class="component">
     <section class="heading">
-        <span class="page-title font-weight-bold font-italic">{{title}}</span>
+        <span class="component-title">{{title}}</span>
         <span> | <a routerLink="/products/list">Return to list...</a></span>
     </section>
     <main class="single">
         <table class="table table-sm">
-    
+            <tr>
+                <td>Vendor</td>
+                <td>
+                    <select [(ngModel)]="product.vendor" class="rounded" [compareWith]="compVendor" disabled>
+                        <option *ngFor="let v of vendors" [ngValue]="v">{{v.name}}</option>
+                    </select>
+                </td>
+            </tr>
+
             <tr>
                 <td>Part Number:</td>
                 <td><input [(ngModel)]="product.partNumber" class="rounded" type="text" disabled></td>

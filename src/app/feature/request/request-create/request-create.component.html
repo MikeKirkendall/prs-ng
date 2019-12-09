@@ -9,7 +9,7 @@
 
             <tr>
                 <td>UserID:</td>
-                <td><input [(ngModel)]="request.user" class="rounded" type="text" disabled ></td>
+                <td><input [(ngModel)]="request.user.id" class="rounded" type="text" disabled ></td>
             </tr>
             <tr>
                 <td>Description:</td>
@@ -25,7 +25,11 @@
             </tr>
             <tr>
                 <td>Delivery Mode:</td>
-                <td><input [(ngModel)]="request.deliveryMode" class="rounded" type="text" ></td>
+                <td><select [(ngModel)]="request.deliveryMode" class="rounded" >
+                <option> Mail</option>
+                <option> Pickup</option>
+                    </select> 
+                </td> 
             </tr>
             
         </table>
